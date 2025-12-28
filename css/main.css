@@ -1,83 +1,100 @@
-/* ----------------------------------------------------
-   Reset & global settings
----------------------------------------------------- */
+/* ==================================================
+   Global reset & basic styles
+================================================== */
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 html, body {
-  margin: 0; padding: 0;
-  font-family: 'Angelwish', sans-serif;
-  color: #fff;
+    margin: 0; padding: 0;
+    font-family: 'Angelwish', sans-serif;
+    color: #fff;
+    height: 100%;
+    width: 100%;
 }
 
-/* ----------------------------------------------------
-   Background wrapper – ensures image is always visible
----------------------------------------------------- */
-.bg-wrapper {
-  min-height: 100vh;
-  background: url('../assets/RS.png') no-repeat center center / cover fixed;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* pushes footer to bottom */
+/* ==================================================
+   Custom font
+================================================== */
+@font-face {
+    font-family: 'Angelwish';
+    src: url('../assets/Angelwish.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
-/* ----------------------------------------------------
-   Transparent menu bar
----------------------------------------------------- */
+/* ==================================================
+   Background image (desktop & mobile)
+================================================== */
+/* Desktop 1280px+ – use full resolution */
+@media screen and (min-width: 768px) {
+    body {
+        background-image: url('../assets/RS.png');
+        background-size: cover;          /* covers the whole viewport */
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}
+/* Mobile – shrink to ~50% width for faster load, keep aspect ratio */
+@media screen and (max-width: 767px) {
+    body {
+        background-image: url('../assets/RS.png');
+        background-size: 100% auto;      /* width full, height auto */
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}
+
+/* ==================================================
+   Menu bar
+================================================== */
 .menu-bar {
-  width: 100%;
-  padding: 1rem 2rem;
-  background: rgba(0,0,0,0);          /* 100 % transparency */
-  display: flex;
-  justify-content: space-between;     /* equal distance from edges */
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: rgba(0,0,0,0);   /* 100% transparent */
+    z-index: 10;
 }
 .menu-btn {
-  font-size: 1.25rem;
-  color: #fff;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem 1rem;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0;
 }
-.menu-btn:hover,
-.menu-btn:focus {
-  text-decoration: underline;
-}
+.menu-btn:hover { text-decoration: underline; }
 
-/* ----------------------------------------------------
-   Info box – hidden by default
----------------------------------------------------- */
+/* ==================================================
+   Info box
+================================================== */
 .info-box {
-  position: absolute; top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.33); /* 33% transparency black */
-  display: none;                  /* JS will toggle */
-  align-items: center; justify-content: center;
-  text-align: center;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0,0,0,0.33);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
-.info-box.open {
-  display: flex;
-}
+.info-box.hidden { display: none; }
 
-/* ----------------------------------------------------
-   Social links footer
----------------------------------------------------- */
-.social-links {
-  padding: 1rem 0;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
+/* ==================================================
+   Footer links
+================================================== */
+.footer-links {
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 2rem;
 }
-.social-links img {
-  width: 1.5rem; height: 1.5rem;
-  filter: invert(100%);   /* make icons white */
-}
-
-/* ----------------------------------------------------
-   Responsive tweaks
----------------------------------------------------- */
-@media (max-width: 600px) {
-  .menu-btn { font-size: 1rem; }
+.footer-links img {
+    width: 32px;            /* SVGs are vector – size is arbitrary */
+    height: 32px;
+    fill: #fff;             /* ensures white icons if they use currentColor */
 }
