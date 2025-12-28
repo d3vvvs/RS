@@ -71,4 +71,5 @@ body {
     background-color: rgba(0, 0, 0, 0.7); /* Darker background for content */
     padding: 20px; /* Internal spacing */
     color: white;
-    width: 80%;
+    width: 80%; /* Width of the info box content */
+}
