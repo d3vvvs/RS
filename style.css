@@ -1,59 +1,105 @@
-/* ---------- Global ---------- */
-*{margin:0;padding:0;box-sizing:border-box;}
-html, body{
-    height:100%;
-    background:url('Assets/RS.png') no-repeat center center fixed;
-    background-size:cover;
-    color:white;
+/* ------------------------------------------------------------------
+   Basic reset & global styles
+-------------------------------------------------------------------*/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
-/* ---------- Header (transparent) ---------- */
-#topbar{
-  position:absolute;
-  top:0; left:0; right:0;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:60px;
-  background:rgba(255,255,255,0); /* fully transparent */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Angelwish', sans-serif;
+    color: #fff;                     /* default text colour */
 }
-.navBtn{
-  background:none;border:none;
-  font-size:2rem;
-  color:white;
-  cursor:pointer;
-  margin:0 20px;
-  padding:10px 15px;
-  transition:color .3s;
-}
-.navBtn:hover{color:#ddd;}
 
-/* ---------- Info boxes ---------- */
-.infoBox{
-  position:absolute;
-  top:80px; left:50%;
-  transform:translateX(-50%);
-  max-width:90%;
-  background:rgba(0,0,0,.33);
-  padding:20px;
-  border-radius:8px;
-  display:none;
+/* Background image – always visible */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url('Assets/RS.png') no-repeat center / cover;
+    z-index: -1;                      /* behind everything */
+    opacity: 0.6;                     /* slight dimming if you wish */
 }
-.infoBox h2{margin-bottom:.5rem;}
-.infoBox p{line-height:1.4;}
 
-/* ---------- Footer links (bottom) ---------- */
-#bottomLinks{
-  position:absolute;
-  bottom:10px; left:50%;
-  transform:translateX(-50%);
-  text-align:center;
+/* ------------------------------------------------------------------
+   Navigation bar
+-------------------------------------------------------------------*/
+#navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-around;     /* two halves */
+    align-items: center;
+    background: rgba(0,0,0,0);         /* fully transparent */
+    z-index: 10;
 }
-#bottomLinks a{
-  color:white;
-  margin:0 15px;
-  font-size:1.2rem;
-  text-decoration:none;
-  transition:color .3s;
+
+.menu-btn {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    background: none;
+    border: none;
+    color: #fff;                       /* white text */
+    cursor: pointer;
+    padding: 0.25em 0.5em;
 }
-#bottomLinks a:hover{color:#ddd;}
+
+/* Hover effect – subtle underline */
+.menu-btn:hover::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    margin-top: 4px;
+}
+
+/* ------------------------------------------------------------------
+   Info boxes
+-------------------------------------------------------------------*/
+.info-box {
+    position: fixed;
+    top: 70px;          /* below navbar */
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(300px, 80%, 600px);
+    max-height: calc(100vh - 70px);
+    background: rgba(0, 0, 0, 0.33);   /* 33% transparent black */
+    color: #fff;
+    padding: 20px;
+    overflow-y: auto;
+    display: none;      /* hidden by default */
+    z-index: 9;
+    border-radius: 8px;
+}
+
+/* ------------------------------------------------------------------
+   Footer
+-------------------------------------------------------------------*/
+#footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+    background: rgba(0,0,0,0.15);     /* slightly visible background */
+}
+
+#footer a {
+    color: #fff;
+    margin: 0 1rem;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    text-decoration: none;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+    .menu-btn {font-size: 1.3rem;}
+}

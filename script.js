@@ -1,36 +1,50 @@
-/* ---------- Toggle Info Boxes ---------- */
-const buttons = document.querySelectorAll('.navBtn');
-let currentBox = null;
+/* ------------------------------------------------------------------
+   Toggle info boxes on button click
+-------------------------------------------------------------------*/
+document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.menu-btn');
+    const boxes = {
+        studio: document.getElementById('box-studio'),
+        gallery: document.getElementById('box-gallery')
+    };
 
-buttons.forEach(btn=>{
-  btn.addEventListener('click', e=>{
-    const targetId = btn.dataset.target;
-    const box = document.querySelector(targetId);
+    // Dummy content – replace later
+    boxes.studio.innerHTML = `<h2>Studio Information</h2><p>This is where you will add your text.</p>`;
+    boxes.gallery.innerHTML = `
+      <h2>Gallery</h2>
+      <div class="gallery-grid">
+        <!-- Add images here -->
+        <img src="Assets/placeholder1.jpg" alt="Image 1">
+        <img src="Assets/placeholder2.jpg" alt="Image 2">
+      </div>
+    `;
 
-    // close currently open box
-    if(currentBox && currentBox !== box){
-      currentBox.style.display='none';
-    }
+    // Helper to close all boxes
+    const hideAll = () => Object.values(boxes).forEach(b => b.style.display = 'none');
 
-    // toggle the clicked one
-    if(box.style.display==='block'){
-        box.style.display='none';
-        currentBox=null;
-    }else{
-        box.style.display='block';
-        currentBox=box;
-    }
-  });
-});
+    buttons.forEach(btn => {
+        btn.addEventListener('click', e => {
+            const target = e.currentTarget.dataset.target;
+            const box   = boxes[target];
 
-/* ---------- Close when clicking outside ---------- */
-document.addEventListener('click', e=>{
-  // ignore clicks on nav buttons
-  if(e.target.classList.contains('navBtn')) return;
+            // If the clicked box is already open, close it
+            if (box.style.display === 'block') {
+                hideAll();
+                return;
+            }
 
-  // if an info box is open, close it
-  if(currentBox){
-    currentBox.style.display='none';
-    currentBox=null;
-  }
+            hideAll();               // close any other open box
+            box.style.display = 'block';
+        });
+    });
+
+    /* ------------------------------------------------------------------
+       Close box when clicking anywhere outside of it
+    -------------------------------------------------------------------*/
+    document.addEventListener('click', e => {
+        const isInsideBox = Object.values(boxes).some(b => b.contains(e.target));
+        if (!isInsideBox && !e.target.classList.contains('menu-btn')) {
+            hideAll();
+        }
+    });
 });
