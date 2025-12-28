@@ -1,3 +1,14 @@
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    /* Force the image to cover the viewport */
+    background: url('../assets/RS.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+
 /* ----------------------------------------------
    General reset & layout
 ---------------------------------------------- */
