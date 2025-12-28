@@ -1,0 +1,108 @@
+/* --------------------------------------------------
+   Basic Reset & Global Styles
+-------------------------------------------------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Angelwish', sans-serif;
+    color: #fff;
+}
+
+/* --------------------------------------------------
+   Background
+-------------------------------------------------- */
+body {
+    background: url('../assets/RS.png') center / cover no-repeat fixed;
+}
+
+/* --------------------------------------------------
+   Menu Bar (transparent)
+-------------------------------------------------- */
+.menu-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* pushes buttons to edges */
+    padding: 1rem 2rem;
+    background: rgba(0,0,0,0); /* fully transparent */
+    z-index: 10;
+}
+
+.menu-btn {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    color: #fff;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+}
+.menu-btn:hover { text-decoration: underline; }
+
+/* --------------------------------------------------
+   Main Content (fills viewport minus header/footer)
+-------------------------------------------------- */
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: calc(100vh - 2rem); /* approximate header+footer height */
+    padding-top: 4rem;   /* space for the fixed menu bar */
+}
+
+/* --------------------------------------------------
+   Info Box
+-------------------------------------------------- */
+.info-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.33);
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 90%;
+    text-align: center;
+}
+.hidden { display: none; }
+
+/* --------------------------------------------------
+   Gallery Section (placeholder)
+-------------------------------------------------- */
+.gallery-section {
+    margin-top: 3rem;
+    width: 100%;
+    /* Future: grid of images */
+}
+
+/* --------------------------------------------------
+   Footer
+-------------------------------------------------- */
+.footer {
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1.5rem;
+}
+.footer img {
+    width: 32px;          /* keep icon size small & crisp */
+    height: 32px;
+    filter: invert(100%); /* make icons white on dark bg */
+}
+
+/* --------------------------------------------------
+   Responsive Tweaks
+-------------------------------------------------- */
+@media (max-width: 600px) {
+    .menu-bar { padding: 0.5rem 1rem; }
+    .menu-btn { font-size: 1rem; }
+}

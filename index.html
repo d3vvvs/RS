@@ -2,36 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Viewport for mobile optimisation -->
+    <title>RS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>RS</title>
-
     <!-- Custom font -->
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="preload" href="./assets/Angelwish.ttf" as="font" type="font/ttf" crossorigin>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <!-- Menu bar (transparent) -->
-    <header id="menu-bar">
-        <nav class="container">
-            <a href="#" data-target="studio" class="menu-btn">STUDIO</a>
-            <a href="#" data-target="gallery" class="menu-btn">GALLERY</a>
-        </nav>
-    </header>
+
+<header class="menu-bar">
+    <button id="studioBtn" class="menu-btn">STUDIO</button>
+    <button id="galleryBtn" class="menu-btn">GALLERY</button>
+</header>
+
+<main class="content">
 
     <!-- Info box (hidden by default) -->
-    <section id="info-box"></section>
+    <div id="infoBox" class="info-box hidden">
+        <p id="infoText"></p>
+    </div>
 
-    <!-- Footer links -->
-    <footer>
-        <div class="container">
-            <a href="mailto:you@example.com" aria-label="Email"><img src="assets/email.svg" alt=""></a>
-            <a href="https://instagram.com/yourprofile" target="_blank" aria-label="Instagram"><img src="assets/instagram.svg" alt=""></a>
-            <a href="https://facebook.com/yourpage" target="_blank" aria-label="Facebook"><img src="assets/facebook.svg" alt=""></a>
-        </div>
-    </footer>
+    <!-- Gallery placeholder (empty until we add images) -->
+    <section id="gallerySection" class="gallery-section hidden"></section>
+</main>
 
-    <!-- JavaScript -->
-    <script src="js/main.js"></script>
+<footer class="footer">
+    <a href="mailto:you@example.com"><img src="./assets/email.svg" alt="Email"></a>
+    <a href="https://instagram.com/yourprofile" target="_blank"><img src="./assets/instagram.svg" alt="Instagram"></a>
+    <a href="https://facebook.com/yourpage" target="_blank"><img src="./assets/facebook.svg" alt="Facebook"></a>
+</footer>
+
+<script src="./js/script.js" defer></script>
 </body>
 </html>
