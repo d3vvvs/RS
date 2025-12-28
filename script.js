@@ -1,35 +1,36 @@
-/* ---------- Helper to close any open box ----------
-   It simply adds the 'hidden' class back */
-function closeBox() {
-    const box = document.getElementById('infoBox');
-    if (!box.classList.contains('hidden')) {
-        box.classList.add('hidden');
+/* ---------- Toggle Info Boxes ---------- */
+const buttons = document.querySelectorAll('.navBtn');
+let currentBox = null;
+
+buttons.forEach(btn=>{
+  btn.addEventListener('click', e=>{
+    const targetId = btn.dataset.target;
+    const box = document.querySelector(targetId);
+
+    // close currently open box
+    if(currentBox && currentBox !== box){
+      currentBox.style.display='none';
     }
-}
 
-/* ---------- Open the appropriate info box ----------
-   `content` is the HTML string that will be shown inside the box */
-function openBox(content) {
-    const box = document.getElementById('infoBox');
-    box.innerHTML = content;
-    box.classList.remove('hidden');
-}
-
-/* ---------- Button click handlers ---------- */
-document.getElementById('btnStudio').addEventListener('click', () => {
-    closeBox(); // close any existing
-    openBox('<h2>STUDIO</h2><p>Content for Studio will go here.</p>');
+    // toggle the clicked one
+    if(box.style.display==='block'){
+        box.style.display='none';
+        currentBox=null;
+    }else{
+        box.style.display='block';
+        currentBox=box;
+    }
+  });
 });
 
-document.getElementById('btnGallery').addEventListener('click', () => {
-    closeBox();
-    openBox('<h2>GALLERY</h2><p>Images will be displayed here later.</p>');
-});
+/* ---------- Close when clicking outside ---------- */
+document.addEventListener('click', e=>{
+  // ignore clicks on nav buttons
+  if(e.target.classList.contains('navBtn')) return;
 
-/* ---------- Click anywhere to close the box ----------
-   We stop propagation when clicking inside the box so it doesn\'t close immediately */
-document.body.addEventListener('click', (e) => {
-    if (!e.target.closest('.info-box')) {
-        closeBox();
-    }
+  // if an info box is open, close it
+  if(currentBox){
+    currentBox.style.display='none';
+    currentBox=null;
+  }
 });

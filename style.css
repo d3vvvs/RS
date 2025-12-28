@@ -1,0 +1,59 @@
+/* ---------- Global ---------- */
+*{margin:0;padding:0;box-sizing:border-box;}
+html, body{
+    height:100%;
+    background:url('Assets/RS.png') no-repeat center center fixed;
+    background-size:cover;
+    color:white;
+}
+
+/* ---------- Header (transparent) ---------- */
+#topbar{
+  position:absolute;
+  top:0; left:0; right:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:60px;
+  background:rgba(255,255,255,0); /* fully transparent */
+}
+.navBtn{
+  background:none;border:none;
+  font-size:2rem;
+  color:white;
+  cursor:pointer;
+  margin:0 20px;
+  padding:10px 15px;
+  transition:color .3s;
+}
+.navBtn:hover{color:#ddd;}
+
+/* ---------- Info boxes ---------- */
+.infoBox{
+  position:absolute;
+  top:80px; left:50%;
+  transform:translateX(-50%);
+  max-width:90%;
+  background:rgba(0,0,0,.33);
+  padding:20px;
+  border-radius:8px;
+  display:none;
+}
+.infoBox h2{margin-bottom:.5rem;}
+.infoBox p{line-height:1.4;}
+
+/* ---------- Footer links (bottom) ---------- */
+#bottomLinks{
+  position:absolute;
+  bottom:10px; left:50%;
+  transform:translateX(-50%);
+  text-align:center;
+}
+#bottomLinks a{
+  color:white;
+  margin:0 15px;
+  font-size:1.2rem;
+  text-decoration:none;
+  transition:color .3s;
+}
+#bottomLinks a:hover{color:#ddd;}
