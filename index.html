@@ -1,29 +1,43 @@
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>RS</title>
-<link rel="stylesheet" href="css/main.css">
-<script defer src="js/main.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, 
+initial-scale=1.0">
+    <title>RS</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <!-- Menu bar -->
-    <nav class="menu-bar">
-        <button id="btn-studio" class="menu-btn">STUDIO</button>
-        <button id="btn-gallery" class="menu-btn">GALLERY</button>
-    </nav>
+    <header>
+        <nav class="menu-bar">
+            <div class="button-container">
+                <a href="#" id="studio-btn">STUDIO</a>
+                <a href="#" id="gallery-btn">GALLERY</a>
+            </div>
+        </nav>
+    </header>
 
-    <!-- Info box (hidden by default) -->
-    <div id="info-box" class="info-box hidden">
-        <p id="info-content"></p>
+    <section class="info-box" id="studio-info-box" style="display: 
+none;">
+        <!-- Studio Info Content -->
+    </section>
+
+    <section class="info-box" id="gallery-info-box" style="display: none^[[B^[[B
+none;">
+        <!-- Gallery Content^[[B^[[B^[[B -->
+    </section>
+
+    <div class="social-icons">
+        <a href="#"><img src="Assets^[[B^[[B^[[B/email^[[B^[[B^[[B.svg" alt="Email"></a>
+        <a^[[A^[[A^[[A href="#"><^[[A^[[A^[[Aimg src="Assets/instagram.svg" a
+alt="Instagram"></a>
+        <a href="#"><img src="Assets/facebook.svg" 
+alt="Facebook"></a>
     </div>
 
-    <!-- Footer links -->
-    <footer class="footer-links">
-        <a href="mailto:you@example.com"><img src="assets/email.svg" alt="Email"></a>
-        <a href="https://instagram.com/yourprofile"><img src="assets/instagram.svg" alt="Instagram"></a>
-        <a href="https://facebook.com/yourpage"><img src="assets/facebook.svg" alt="Facebook"></a>
-    </footer>
+    <script src="script.js"></script>
 </body>
 </html>
+```
