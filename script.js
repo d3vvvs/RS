@@ -1,32 +1,34 @@
-
-```javascript
+/* ----------------------------------------------------------
+   Simple panel toggle logic
+---------------------------------------------------------- */
 document.addEventListener('DOMContentLoaded', () => {
-    const studioBtn = document.getElementById('studio-btn');
-    const galleryBtn = document.getElementById('gallery-btn');
-    const studioInfoBox = document.getElementById('studio-info-box');
-    const galleryInfoBox = document.getElementById('gallery-info-box');
+  const panels = document.querySelectorAll('.panel');
+  let activePanel = null;
 
-    function closeInfoBoxes() {
-        studioInfoBox.style.display = 'none';
-        galleryInfoBox.style.display = 'none';
+  // Close any open panel when clicking outside it
+  document.body.addEventListener('click', e => {
+    if (activePanel && !e.target.closest('.panel')) {
+      hidePanel(activePanel);
     }
+  });
 
-    studioBtn.addEventListener('click', () => {
-        closeInfoBoxes();
-        studioInfoBox.classList.add('active');
-    });
+  // Button click handler
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.dataset.target;
+      const panel   = document.getElementById(targetId);
 
-    galleryBtn.addEventListener('click', () => {
-        closeInfoBoxes();
-        galleryInfoBox.classList.add('active');
+      if (panel === activePanel) {            // toggle off
+        hidePanel(panel);
+        activePanel = null;
+      } else {
+        if (activePanel) hidePanel(activePanel);  // close previous
+        showPanel(panel);
+        activePanel = panel;
+      }
     });
+  });
 
-    document.addEventListener('click', (event) => {
-        if (!studioInfoBox.contains(event.target) && 
-!galleryInfoBox.contains(event.target)) {
-            studioInfoBox.style.display = 'none';
-            galleryInfoBox.style.display = 'none';
-        }
-    });
+  function showPanel(el) { el.classList.remove('hidden'); }
+  function hidePanel(el) { el.classList.add('hidden');   }
 });
-```

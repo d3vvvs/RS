@@ -1,43 +1,45 @@
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, 
-initial-scale=1.0">
-    <title>RS</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>RS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="style.css">
+<script defer src="script.js"></script>
 </head>
+
 <body>
-    <header>
-        <nav class="menu-bar">
-            <div class="button-container">
-                <a href="#" id="studio-btn">STUDIO</a>
-                <a href="#" id="gallery-btn">GALLERY</a>
-            </div>
-        </nav>
+  <!-- Background wrapper -->
+  <div class="bg-wrapper">
+
+    <!-- Navigation bar -->
+    <header class="navbar">
+      <button data-target="studio" class="nav-btn">STUDIO</button>
+      <button data-target="gallery" class="nav-btn">GALLERY</button>
     </header>
 
-    <section class="info-box" id="studio-info-box" style="display: 
-none;">
-        <!-- Studio Info Content -->
+    <!-- Pop‑up panels (hidden by default) -->
+    <section id="studio" class="panel hidden">
+      <h2>Studio Info</h2>
+      <p>Lorem ipsum dolor sit amet...</p>
     </section>
 
-    <section class="info-box" id="gallery-info-box" style="display: none^[[B^[[B
-none;">
-        <!-- Gallery Content^[[B^[[B^[[B -->
+    <section id="gallery" class="panel hidden">
+      <h2>Gallery</h2>
+      <!-- Placeholder – replace with real images later -->
+      <div class="gallery-grid">
+        <img src="assets/placeholder.png" alt="">
+      </div>
     </section>
 
-    <div class="social-icons">
-        <a href="#"><img src="Assets^[[B^[[B^[[B/email^[[B^[[B^[[B.svg" alt="Email"></a>
-        <a^[[A^[[A^[[A href="#"><^[[A^[[A^[[Aimg src="Assets/instagram.svg" a
-alt="Instagram"></a>
-        <a href="#"><img src="Assets/facebook.svg" 
-alt="Facebook"></a>
-    </div>
+    <!-- Social links -->
+    <footer class="social-links">
+      <a href="#" aria-label="Email"><img src="assets/icons/email.svg" alt=""></a>
+      <a href="#" aria-label="Instagram"><img src="assets/icons/instagram.svg" alt=""></a>
+      <a href="#" aria-label="Facebook"><img src="assets/icons/facebook.svg" alt=""></a>
+    </footer>
 
-    <script src="script.js"></script>
+  </div> <!-- /.bg-wrapper -->
 </body>
 </html>
-```
