@@ -90,7 +90,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(0,0,0,0.93); /* 93% transparent black */
+    background-color: rgba(0,0,0,0.93); /* 93% opaque black (almost solid) */
     color: #fff;
     padding: 2rem;
     max-width: 90vw;          /* responsive width */
@@ -129,7 +129,7 @@ body {
     bottom: 1rem;
     left: 50%;
     transform: translateX(-50%);
-    display: flex;            /* row layout by default */
+    display: flex;            /* row layout by default (no stack) */
     gap: 2rem;                /* space between links */
 }
 
@@ -148,13 +148,7 @@ body {
 ---------------------------------------------------------- */
 @media (max-width: 600px) {
     .nav-button { font-size: 1.8rem; }
-
-    /* Stack footer links vertically on mobile */
-    #footer-links {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: center;
-    }
+    /* No change to #footer-links – it stays side‑by‑side on all sizes */
 }
 </style>
 </head>
