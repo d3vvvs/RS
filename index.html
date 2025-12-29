@@ -137,7 +137,7 @@ body {
     color: #fff;
     font-size: 1.5rem;
     text-decoration: none;
-    cursor: pointer;
+    cursor:pointer;
     transition: opacity .15s ease-in-out;
 }
 .footer-link:hover,
@@ -151,15 +151,13 @@ body {
 
     /* Move the whole menu bar to bottom, above footer links */
     #menu-bar {
-        top: auto;            /* cancel the old top value */
-        bottom: 3rem;         /* place it a little higher than the footer */
-        background-color: transparent;   /* optional shade for visibility */
+        top: auto;
+        bottom: 3rem;
+        background-color: transparent;   /* fully transparent on mobile */
     }
 
-    /* Give the body extra padding at the bottom so content
-       isn’t hidden behind the fixed bar when scrolling. */
     body {
-        padding-bottom: 6rem;   /* adjust if your bar is taller */
+        padding-bottom: 6rem;   /* prevent content from being hidden behind the fixed bar */
     }
 }
 </style>
@@ -199,6 +197,33 @@ body {
        class="footer-link">FACEBOOK</a>
 </footer>
 
+<!-- 4. Background soundtrack – add this before closing body -->
+<audio id="bg-music" src="Assets/MP3/RS.mp3"
+       preload="auto" loop muted></audio>
+
+<button id="music-toggle" style="
+    position:fixed; bottom:1rem; right:1rem;
+    background:#0008; color:white; border:none;
+    padding:.5rem 1rem; font-size:1.2rem;
+    cursor:pointer;">
+    🎵 Play Music
+</button>
+
+<script>
+const music = document.getElementById('bg-music');
+const btn   = document.getElementById('music-toggle');
+
+btn.addEventListener('click', () => {
+    if (music.muted) {          // currently muted → unmute
+        music.muted = false;
+        btn.textContent = '⏸️ Pause Music';
+    } else {                    // currently playing → mute
+        music.muted = true;
+        btn.textContent = '▶️ Play Music';
+    }
+});
+</script>
+
 <script>
 /* ----------------------------------------------------------
    Utility functions – hide/show the info boxes
@@ -237,35 +262,6 @@ document.getElementById('gallery-btn').addEventListener('click', e => {
    Close any open box when clicking anywhere else on the page
 ---------------------------------------------------------- */
 document.body.addEventListener('click', () => hideAll());
-
-/* ----------------------------------------------------------
-   Simple light‑box for gallery images
----------------------------------------------------------- */
-document.querySelectorAll('#gallery-box .image-grid img').forEach(img => {
-    img.addEventListener('click', () => openLightbox(img.src));
-});
-
-function openLightbox(src) {
-    let overlay = document.getElementById('lightbox-overlay');
-    if (!overlay) {
-        overlay = document.createElement('div');
-        overlay.id = 'lightbox-overlay';
-        overlay.style.position = 'fixed';
-        overlay.style.top = '0';
-        overlay.style.left = '0';
-        overlay.style.width = '100%';
-        overlay.style.height = '100%';
-        overlay.style.backgroundColor = 'rgba(0,0,0,0.8)';
-        overlay.style.display = 'flex';
-        overlay.style.alignItems = 'center';
-        overlay.style.justifyContent = 'center';
-        overlay.style.zIndex = 9999;
-        document.body.appendChild(overlay);
-    }
-
-    overlay.innerHTML = `<img src="${src}" style="max-width:90%; max-height:90%;">`;
-    overlay.onclick = () => { overlay.style.display = 'none'; };
-}
 </script>
 </body>
 </html>
